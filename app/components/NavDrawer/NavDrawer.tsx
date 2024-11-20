@@ -82,22 +82,23 @@ const NavDrawer = () => {
           aria-label='close sidebar'
           className='drawer-overlay'
         ></label>
-        <ul className='menu bg-base-100 min-h-full w-80  navdrawer'>
+        <ul className='menu bg-base-100 min-h-full w-80 navdrawer'>
           {/* Sidebar content here */}
-          <li className='text-xl'>
+          <li className='text-2xl'>
             <Link onClick={handleClick} href={'/'}>
               <BiHomeAlt className='text-accent' />
               William Dunn
             </Link>
           </li>
           <li>
-            <Link onClick={handleClick} href={'/projects'}>
+            <Link className='text-2xl' onClick={handleClick} href={'/projects'}>
               <LuPencilRuler className='text-accent' />
               Projects
             </Link>
           </li>
           <li>
             <Link
+              className='text-2xl'
               onClick={handleClick}
               href={'mailto:will@wedward.com'}
               target='_blank'
@@ -108,6 +109,7 @@ const NavDrawer = () => {
           </li>
           <li>
             <Link
+              className='text-2xl'
               onClick={handleClick}
               href={
                 'https://drive.google.com/file/d/1-R4QzLSF6e4Cs1YvXk3xT2T4E8azQOuv/view?usp=sharing'
