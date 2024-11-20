@@ -40,6 +40,32 @@ export default {
   },
   plugins: [require('@tailwindcss/typography'), require('daisyui')],
   daisyui: {
-    themes: ['nord', 'dim'],
+    // themes: ['nord', 'dim'],
+    themes: [
+      {
+        nord: {
+          ...require('daisyui/src/theming/themes')['nord'],
+          '.navdrawer': {
+            'background-color': 'rgb(236, 239, 244)',
+            color: 'rgb(178, 197, 216)',
+            'padding-top': '20%',
+            'min-height': '100%',
+            width: '20rem',
+          },
+        },
+        dim: {
+          ...require('daisyui/src/theming/themes')['dim'],
+          '.navdrawer': {
+            'background-color': 'rgb(43, 48, 60)',
+            color: 'rgb(255, 126, 92)',
+            'padding-top': '20%',
+            'min-height': '100%',
+            width: '20rem',
+          },
+        },
+      },
+    ],
+    darkTheme: ['selector', '[data-theme="dim"]'],
+    styled: true,
   },
 } satisfies Config;
