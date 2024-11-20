@@ -25,7 +25,7 @@ export default function RootLayout({
       <body>
         <NavDrawer />
         <div
-          className={`px-[10%] lg:pt-[5%] justify-items-center bg-base-300 ${roboto.className}`}
+          className={`px-[10%] lg:px-[30%] lg:pt-[5%] justify-items-center bg-base-300 ${roboto.className}`}
         >
           {children}
         </div>
