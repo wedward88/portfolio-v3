@@ -21,7 +21,7 @@ const SkillsSection = () => {
           My toolbox includes
         </div>
       </div>
-      <div className='animate-fadeInFromBottom grid grid-cols-3 gap-5 text-6xl pt-10 md:grid-cols-3 md:gap-10 md:text-9xl lg:py-20 lg:grid-cols-3 lg:gap-10 lg:text-9xl'>
+      <div className='animate-fadeInFromBottom grid grid-cols-3 gap-5 text-6xl pt-10 md:grid-cols-3 md:gap-10 md:text-9xl lg:py-20 lg:grid-cols-3 lg:gap-10 lg:text-9xl [&>*]:flex [&>*]:justify-center'>
         <div title='Javascript'>
           <Link href='https://www.javascript.com/' target='_blank'>
             <SiJavascript />

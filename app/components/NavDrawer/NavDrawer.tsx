@@ -73,7 +73,7 @@ const NavDrawer = () => {
           aria-label='close sidebar'
           className='drawer-overlay'
         ></label>
-        <ul className='menu bg-base-100 min-h-full w-80 p-4 pt-2 navdrawer'>
+        <ul className='menu bg-base-100 min-h-full w-80  navdrawer'>
           {/* Sidebar content here */}
           <li className='text-xl'>
             <Link onClick={handleClick} href={'/'}>

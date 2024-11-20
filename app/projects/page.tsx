@@ -8,7 +8,7 @@ const ProjectsPage = () => {
       <div className='flex w-full flex-col'>
         <div className='divider divider-accent text-2xl'>My projects</div>
       </div>
-      <div className='grid grid-cols-1 gap-10 md:gap-20 lg:gap-20 mt-10 lg:w-[50%]'>
+      <div className='grid grid-cols-1 gap-10 mt-10 md:gap-20 lg:gap-20'>
         <div className='animate-fadeIn'>
           <ProjectCard
             name='nyt-headliner'

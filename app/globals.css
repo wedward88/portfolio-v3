@@ -17,7 +17,3 @@
     transform: translateY(0);
   }
 }
-
-.grid::after {
-  display: none;
-}

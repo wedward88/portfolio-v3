@@ -48,7 +48,7 @@ export default {
           '.navdrawer': {
             'background-color': 'rgb(236, 239, 244)',
             color: 'rgb(178, 197, 216)',
-            'padding-top': '20%',
+            'padding-top': '10vh',
             'min-height': '100%',
             width: '20rem',
           },
@@ -58,7 +58,7 @@ export default {
           '.navdrawer': {
             'background-color': 'rgb(43, 48, 60)',
             color: 'rgb(255, 126, 92)',
-            'padding-top': '20%',
+            'padding-top': '10vh',
             'min-height': '100%',
             width: '20rem',
           },
