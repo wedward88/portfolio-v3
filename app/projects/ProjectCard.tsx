@@ -23,7 +23,7 @@ const ProjectCard = ({
   url,
 }: Props) => {
   return (
-    <div className='card bg-base-100 shadow-xl z-0'>
+    <div className='card bg-base-100 shadow-xl z-0 md:h-full lg:h-full'>
       <figure>
         <Image
           id={name}

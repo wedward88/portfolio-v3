@@ -1,5 +1,9 @@
 'use client';
 import React, { useState } from 'react';
+import { BiHomeAlt } from 'react-icons/bi';
+import { HiOutlineMail } from 'react-icons/hi';
+import { LuPencilRuler } from 'react-icons/lu';
+import { RxReader } from 'react-icons/rx';
 import Link from 'next/link';
 
 import HamButton from './HamButton';
@@ -29,9 +33,10 @@ const NavDrawer = () => {
             <ul className='menu menu-horizontal'>
               <li>
                 <Link
-                  className='hidden md:block lg:block hover:bg-base-300 hover:text-primary'
+                  className='hidden md:flex lg:flex hover:bg-base-300 hover:text-primary'
                   href={'/'}
                 >
+                  <BiHomeAlt className='text-secondary' />
                   Home
                 </Link>
               </li>
@@ -40,6 +45,7 @@ const NavDrawer = () => {
                   className='hover:bg-base-300 hover:text-primary'
                   href={'/projects'}
                 >
+                  <LuPencilRuler className='text-secondary' />
                   Projects
                 </Link>
               </li>
@@ -47,7 +53,9 @@ const NavDrawer = () => {
                 <Link
                   className='hover:bg-base-300 hover:text-primary'
                   href={'mailto:will@wedward.com'}
+                  target='_blank'
                 >
+                  <HiOutlineMail className='text-secondary' />
                   Contact
                 </Link>
               </li>
@@ -59,6 +67,7 @@ const NavDrawer = () => {
                   }
                   target='_blank'
                 >
+                  <RxReader className='text-secondary' />
                   Resume
                 </Link>
               </li>
@@ -77,16 +86,23 @@ const NavDrawer = () => {
           {/* Sidebar content here */}
           <li className='text-xl'>
             <Link onClick={handleClick} href={'/'}>
+              <BiHomeAlt className='text-accent' />
               William Dunn
             </Link>
           </li>
           <li>
             <Link onClick={handleClick} href={'/projects'}>
+              <LuPencilRuler className='text-accent' />
               Projects
             </Link>
           </li>
           <li>
-            <Link onClick={handleClick} href={'mailto:will@wedward.com'}>
+            <Link
+              onClick={handleClick}
+              href={'mailto:will@wedward.com'}
+              target='_blank'
+            >
+              <HiOutlineMail className='text-accent' />
               Contact
             </Link>
           </li>
@@ -98,6 +114,7 @@ const NavDrawer = () => {
               }
               target='_blank'
             >
+              <RxReader className='text-accent' />
               Resume
             </Link>
           </li>
