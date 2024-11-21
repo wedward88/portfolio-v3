@@ -9,8 +9,10 @@ const HamButton = (props: Props) => {
   const { handleClick, isOpen } = props;
   return (
     <button
+      aria-expanded={isOpen}
+      aria-label='Toggle navigation'
       onClick={handleClick}
-      className='flex flex-col z-10 pt-10 px-5 absolute drawer-button lg:hidden'
+      className='flex flex-col z-10 pt-10 px-5 relative drawer-button bg-transparent lg:hidden'
     >
       <span
         className={`bg-primary block transition-all duration-300 ease-out

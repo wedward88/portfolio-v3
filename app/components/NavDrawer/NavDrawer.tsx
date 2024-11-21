@@ -17,7 +17,7 @@ const NavDrawer = () => {
   };
 
   return (
-    <div className='drawer z-50'>
+    <div className='drawer z-50 relative bg-base-300'>
       <input
         id='my-drawer-3'
         type='checkbox'
