@@ -30,13 +30,13 @@ const NavDrawer = () => {
         {/* Navbar */}
         <div className='navbar bg-base-300 w-full justify-end'>
           <div className='hidden flex-none lg:block'>
-            <ul className='menu menu-horizontal'>
+            <ul className='menu menu-horizontal text-xl font-light text-primary'>
               <li>
                 <Link
                   className='hidden md:flex lg:flex hover:bg-base-300 hover:text-primary'
                   href={'/'}
                 >
-                  <BiHomeAlt className='text-secondary' />
+                  <BiHomeAlt className='text-accent' />
                   Home
                 </Link>
               </li>
@@ -45,7 +45,7 @@ const NavDrawer = () => {
                   className='hover:bg-base-300 hover:text-primary'
                   href={'/projects'}
                 >
-                  <LuPencilRuler className='text-secondary' />
+                  <LuPencilRuler className='text-accent' />
                   Projects
                 </Link>
               </li>
@@ -55,7 +55,7 @@ const NavDrawer = () => {
                   href={'mailto:will@wedward.com'}
                   target='_blank'
                 >
-                  <HiOutlineMail className='text-secondary' />
+                  <HiOutlineMail className='text-accent' />
                   Contact
                 </Link>
               </li>
@@ -67,7 +67,7 @@ const NavDrawer = () => {
                   }
                   target='_blank'
                 >
-                  <RxReader className='text-secondary' />
+                  <RxReader className='text-accent' />
                   Resume
                 </Link>
               </li>

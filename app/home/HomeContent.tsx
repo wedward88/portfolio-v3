@@ -27,7 +27,7 @@ const HomeContent = () => {
       <p className='text-xl lg:text-2xl text-base-content mt-10 animate-fadeIn'>
         I&apos;m&nbsp;
         <a
-          className='text-3xl text-secondary hover:text-primary'
+          className='text-2xl text-secondary hover:text-primary'
           href='https://www.linkedin.com/in/wedward88/'
           target='_blank'
         >
@@ -35,7 +35,7 @@ const HomeContent = () => {
         </a>
         , a software engineer and problem solver based out of Nashville, TN.
       </p>
-      <div className='flex flex-col md:text-2xl lg:text-2xl mt-10 lg:mt-20'>
+      <div className='flex flex-col text-xl md:text-2xl lg:text-2xl mt-10 lg:mt-20'>
         <div className='flex justify-evenly items-center'>
           <div className='flex w-full flex-col'>
             <div className='divider divider-accent text-2xl lg:text-3xl'>
@@ -61,7 +61,7 @@ const HomeContent = () => {
           <p className='mt-5 lg:mt-10'>
             Please take a moment to check out some of my{' '}
             <Link
-              className='text-xl lg:text-3xl text-secondary hover:text-primary'
+              className='text-2xl lg:text-3xl text-secondary hover:text-primary'
               href={'/projects'}
             >
               projects!
