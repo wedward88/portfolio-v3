@@ -10,7 +10,7 @@ const HamButton = (props: Props) => {
   return (
     <button
       onClick={handleClick}
-      className='flex flex-col z-10 mt-10 mx-5 absolute drawer-button lg:hidden'
+      className='flex flex-col z-10 pt-10 px-5 absolute drawer-button lg:hidden'
     >
       <span
         className={`bg-primary block transition-all duration-300 ease-out
