@@ -1,7 +1,11 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import Loading from '../components/Loading';
 
 interface Props {
   badges: Array<string>;
@@ -22,20 +26,35 @@ const ProjectCard = ({
   title,
   url,
 }: Props) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
+
   return (
-    <div className='card bg-base-100 shadow-xl z-0 md:h-full lg:h-full'>
-      <figure>
+    <div className='card bg-base-100 shadow-xl z-0 h-full'>
+      <figure className='relative w-auto'>
+        {isLoading && (
+          <div className='absolute inset-0 flex items-center justify-center bg-gray-100'>
+            <Loading />
+          </div>
+        )}
         <Image
           id={name}
           alt={name}
           src={url}
-          width='1000'
-          height='1000'
-          style={{ width: '100%', height: '100%' }}
-          className='project-card shadow-2xl'
+          width={10}
+          height={10}
+          layout='responsive'
+          // style={{ width: '100%', height: '100%', }}
+          className={`project-card shadow-2xl transition-opacity duration-300 ${
+            isLoading ? 'opacity-0' : 'opacity-100'
+          }`}
+          onLoad={handleImageLoad}
         />
       </figure>
-      <div className='card-body'>
+      <div className={`card-body ${isLoading ? 'hidden' : 'flex'}`}>
         <div className='flex items-center'>
           <h2 className='card-title'>
             <Link className='hover:text-accent' href={link} target='_blank'>
