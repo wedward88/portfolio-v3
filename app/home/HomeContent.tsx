@@ -45,23 +45,23 @@ const HomeContent = () => {
         </div>
         <div className='animate-fadeInFromBottom'>
           <p className='mt-5 lg:mt-20'>
-            Born and raised in the NYC area, my interest in computers started in
-            middle school, when I needed to upgrade my mother&apos;s computer
-            with a new video card. 18 years later, equipped with a degree in
-            Computer Information Systems, I&apos;m on a mission to create
-            enjoyable web experiences by creating clean, user-friendly
-            applications.
+            Born and raised in the NYC area, my passion for technology started
+            in middle school, when I needed to upgrade the family computer with
+            a new video card. Many years later, equipped with a degree in
+            Computer Information Systems, I&apos;ve dedicated my career to
+            crafting clean, intuitive, and enjoyable web experiences.
           </p>
           <p className='mt-5 lg:mt-10'>
-            With over 9 years of experience as an IT professional, and 5 years
-            in software development, I&apos;ve developed the problem solving and
-            analytical skills necessary to tackle difficult bugs, and
-            troubleshoot effectively.
+            With over 9 years of IT experience and 5 years (and counting) in
+            software development, I possess a strong foundation in
+            problem-solving and analytical thinking, allowing me to effectively
+            troubleshoot.
           </p>
           <p className='mt-5 lg:mt-10'>
-            Please take a moment to check out some of my{' '}
+            I'm always looking to learn new technologies, and expand my skill
+            set. Please take a moment to check out some of my{' '}
             <Link
-              className='text-2xl lg:text-3xl text-secondary hover:text-primary'
+              className='text-xl lg:text-3xl text-secondary hover:text-primary'
               href={'/projects'}
             >
               projects!

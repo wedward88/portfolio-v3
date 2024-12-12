@@ -69,7 +69,7 @@ const ProjectCard = ({
             <FaGithub />
           </Link>
         </div>
-        <p>{desc}</p>
+        <p className='my-5'>{desc}</p>
         <div className='card-actions justify-center'>
           {badges.map((badge, i) => (
             <div
