@@ -1,11 +1,8 @@
 'use client';
-import React, { useEffect } from 'react';
-import { themeChange } from 'theme-change';
+import React, { useState } from 'react';
 
 const ThemeToggle = () => {
-  useEffect(() => {
-    themeChange(false);
-  }, []);
+  const [isDark, setIsDark] = useState(true);
 
   return (
     <label className='flex cursor-pointer gap-2 m-5  fill-primary-content'>
@@ -23,7 +20,13 @@ const ThemeToggle = () => {
         <circle cx='12' cy='12' r='5' />
         <path d='M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4' />
       </svg>
-      <input type='checkbox' value='dim' className='toggle theme-controller' />
+      <input
+        type='checkbox'
+        value={isDark ? 'dim' : 'nord'}
+        className='toggle theme-controller'
+        checked={isDark}
+        onChange={() => setIsDark(!isDark)}
+      />
       <svg
         xmlns='http://www.w3.org/2000/svg'
         width='20'

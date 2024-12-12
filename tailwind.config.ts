@@ -40,7 +40,6 @@ export default {
   },
   plugins: [require('@tailwindcss/typography'), require('daisyui')],
   daisyui: {
-    // themes: ['nord', 'dim'],
     themes: [
       {
         nord: {
@@ -65,7 +64,7 @@ export default {
         },
       },
     ],
-    darkTheme: ['selector', '[data-theme="dim"]'],
+    base: true,
     styled: true,
   },
 } satisfies Config;

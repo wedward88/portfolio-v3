@@ -44,10 +44,12 @@ const ProjectCard = ({
           id={name}
           alt={name}
           src={url}
-          width={10}
-          height={10}
-          layout='responsive'
-          // style={{ width: '100%', height: '100%', }}
+          width={1920}
+          height={1080}
+          style={{
+            width: '100%',
+            height: 'auto',
+          }}
           className={`project-card shadow-2xl transition-opacity duration-300 ${
             isLoading ? 'opacity-0' : 'opacity-100'
           }`}

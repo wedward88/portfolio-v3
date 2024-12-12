@@ -21,11 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html data-theme='nord' lang='en'>
+    <html lang='en'>
       <body>
         <NavDrawer />
         <div
-          className={`px-[10%] lg:px-[20%] lg:pt-[5%] justify-items-center bg-base-300 ${roboto.className}`}
+          className={`px-[10%] lg:px-[20%] lg:pt-[5%] justify-items-center bg-base-300 dark:[data-theme=dim] ${roboto.className}`}
         >
           {children}
         </div>
