@@ -58,8 +58,8 @@ const HomeContent = () => {
             troubleshoot.
           </p>
           <p className='mt-5 lg:mt-10'>
-            I'm always looking to learn new technologies, and expand my skill
-            set. Please take a moment to check out some of my{' '}
+            I&apos;m always looking to learn new technologies, and expand my
+            skill set. Please take a moment to check out some of my{' '}
             <Link
               className='text-xl lg:text-3xl text-secondary hover:text-primary'
               href={'/projects'}
