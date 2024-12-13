@@ -13,8 +13,10 @@ import ThemeToggle from '../ThemeToggle';
 const NavDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = (eventName: string) => {
-    setIsOpen(!isOpen);
+  const handleClick = (eventName: string, navDrawer: boolean) => {
+    if (navDrawer) {
+      setIsOpen(!isOpen);
+    }
     sendGAEvent('event', eventName);
   };
 
@@ -25,10 +27,10 @@ const NavDrawer = () => {
         type='checkbox'
         className='drawer-toggle'
         checked={isOpen}
-        onChange={() => handleClick('hamburgerMenuClick')}
+        onChange={() => handleClick('hamburgerMenuClick', true)}
       />
       <HamButton
-        handleClick={() => handleClick('hamburgerMenuClick')}
+        handleClick={() => handleClick('hamburgerMenuClick', true)}
         isOpen={isOpen}
       />
       <div className='drawer-content'>
@@ -40,7 +42,7 @@ const NavDrawer = () => {
                 <Link
                   className='hidden md:flex lg:flex hover:bg-base-300 hover:text-primary'
                   href={'/'}
-                  onClick={() => handleClick('homeNavClick')}
+                  onClick={() => handleClick('homeNavClick', false)}
                 >
                   <BiHomeAlt className='text-accent' />
                   Home
@@ -50,7 +52,7 @@ const NavDrawer = () => {
                 <Link
                   className='hover:bg-base-300 hover:text-primary'
                   href={'/projects'}
-                  onClick={() => handleClick('projectNavClick')}
+                  onClick={() => handleClick('projectNavClick', false)}
                 >
                   <LuPencilRuler className='text-accent' />
                   Projects
@@ -61,7 +63,7 @@ const NavDrawer = () => {
                   className='hover:bg-base-300 hover:text-primary'
                   href={'mailto:will@wedward.com'}
                   target='_blank'
-                  onClick={() => sendGAEvent('event', 'emailClick')}
+                  onClick={() => handleClick('emailClick', false)}
                 >
                   <HiOutlineMail className='text-accent' />
                   Contact
@@ -74,7 +76,7 @@ const NavDrawer = () => {
                     'https://drive.google.com/file/d/19jhf328V_IUY3r6d4ir2O-Okmlxm57Vy/view?usp=drive_link'
                   }
                   target='_blank'
-                  onClick={() => sendGAEvent('event', 'resumeDownload')}
+                  onClick={() => handleClick('resumeDownload', false)}
                 >
                   <RxReader className='text-accent' />
                   Resume
@@ -94,7 +96,7 @@ const NavDrawer = () => {
         <ul className='menu bg-base-100 min-h-full w-80 navdrawer'>
           {/* Sidebar content here */}
           <li className='text-2xl'>
-            <Link onClick={() => handleClick('homeNavClick')} href={'/'}>
+            <Link onClick={() => handleClick('homeNavClick', true)} href={'/'}>
               <BiHomeAlt className='text-accent' />
               William Dunn
             </Link>
@@ -102,7 +104,7 @@ const NavDrawer = () => {
           <li>
             <Link
               className='text-2xl'
-              onClick={() => handleClick('projectNavClick')}
+              onClick={() => handleClick('projectNavClick', true)}
               href={'/projects'}
             >
               <LuPencilRuler className='text-accent' />
@@ -112,7 +114,7 @@ const NavDrawer = () => {
           <li>
             <Link
               className='text-2xl'
-              onClick={() => handleClick('emailClick')}
+              onClick={() => handleClick('emailClick', true)}
               href={'mailto:will@wedward.com'}
               target='_blank'
             >
@@ -123,7 +125,7 @@ const NavDrawer = () => {
           <li>
             <Link
               className='text-2xl'
-              onClick={() => handleClick('resumeDownload')}
+              onClick={() => handleClick('resumeDownload', true)}
               href={
                 'https://drive.google.com/file/d/19jhf328V_IUY3r6d4ir2O-Okmlxm57Vy/view?usp=drive_link'
               }
