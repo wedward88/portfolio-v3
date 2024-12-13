@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Roboto } from 'next/font/google';
+import { GoogleTagManager } from '@next/third-parties/google';
 
 import NavDrawer from './components/NavDrawer/NavDrawer';
 import Footer from './components/Footer';
@@ -22,6 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
+      <GoogleTagManager gtmId='G-QLYGZFERTY' />
       <body>
         <NavDrawer />
         <div
