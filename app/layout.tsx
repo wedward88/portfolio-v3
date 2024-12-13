@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <GoogleTagManager gtmId='G-QLYGZFERTY' />
+      <GoogleTagManager gtmId='GTM-55237LBV' />
       <body>
         <NavDrawer />
         <div
