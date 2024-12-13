@@ -13,7 +13,7 @@ import ThemeToggle from '../ThemeToggle';
 const NavDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = (eventName: String) => {
+  const handleClick = (eventName: string) => {
     setIsOpen(!isOpen);
     sendGAEvent('event', eventName);
   };

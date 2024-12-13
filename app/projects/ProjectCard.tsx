@@ -29,7 +29,7 @@ const ProjectCard = ({
 }: Props) => {
   const [isLoading, setIsLoading] = useState(true);
 
-  const handleLinkClick = (eventName: String) => {
+  const handleLinkClick = (eventName: string) => {
     sendGAEvent('event', eventName);
   };
 
