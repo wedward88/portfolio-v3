@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
+import { sendGAEvent } from '@next/third-parties/google';
 
 import Loading from '../components/Loading';
 
@@ -27,6 +28,10 @@ const ProjectCard = ({
   url,
 }: Props) => {
   const [isLoading, setIsLoading] = useState(true);
+
+  const handleLinkClick = (eventName: String) => {
+    sendGAEvent('event', eventName);
+  };
 
   const handleImageLoad = () => {
     setIsLoading(false);
@@ -59,7 +64,12 @@ const ProjectCard = ({
       <div className={`card-body ${isLoading ? 'hidden' : 'flex'}`}>
         <div className='flex items-center'>
           <h2 className='card-title'>
-            <Link className='hover:text-accent' href={link} target='_blank'>
+            <Link
+              className='hover:text-accent'
+              href={link}
+              target='_blank'
+              onClick={() => handleLinkClick(`projectVisited:${title}`)}
+            >
               {title}
             </Link>
           </h2>
@@ -67,6 +77,7 @@ const ProjectCard = ({
             className='ml-5 text-xl hover:text-accent'
             target='_blank'
             href={github}
+            onClick={() => handleLinkClick(`githubVisited:${github}`)}
           >
             <FaGithub />
           </Link>

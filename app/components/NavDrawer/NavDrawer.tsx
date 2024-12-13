@@ -5,6 +5,7 @@ import { HiOutlineMail } from 'react-icons/hi';
 import { LuPencilRuler } from 'react-icons/lu';
 import { RxReader } from 'react-icons/rx';
 import Link from 'next/link';
+import { sendGAEvent } from '@next/third-parties/google';
 
 import HamButton from './HamButton';
 import ThemeToggle from '../ThemeToggle';
@@ -12,8 +13,9 @@ import ThemeToggle from '../ThemeToggle';
 const NavDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = (eventName: String) => {
     setIsOpen(!isOpen);
+    sendGAEvent('event', eventName);
   };
 
   return (
@@ -23,9 +25,12 @@ const NavDrawer = () => {
         type='checkbox'
         className='drawer-toggle'
         checked={isOpen}
-        onChange={handleClick}
+        onChange={() => handleClick('hamburgerMenuClick')}
       />
-      <HamButton handleClick={handleClick} isOpen={isOpen} />
+      <HamButton
+        handleClick={() => handleClick('hamburgerMenuClick')}
+        isOpen={isOpen}
+      />
       <div className='drawer-content'>
         {/* Navbar */}
         <div className='navbar bg-base-300 w-full justify-end'>
@@ -35,6 +40,7 @@ const NavDrawer = () => {
                 <Link
                   className='hidden md:flex lg:flex hover:bg-base-300 hover:text-primary'
                   href={'/'}
+                  onClick={() => handleClick('homeNavClick')}
                 >
                   <BiHomeAlt className='text-accent' />
                   Home
@@ -44,6 +50,7 @@ const NavDrawer = () => {
                 <Link
                   className='hover:bg-base-300 hover:text-primary'
                   href={'/projects'}
+                  onClick={() => handleClick('projectNavClick')}
                 >
                   <LuPencilRuler className='text-accent' />
                   Projects
@@ -54,6 +61,7 @@ const NavDrawer = () => {
                   className='hover:bg-base-300 hover:text-primary'
                   href={'mailto:will@wedward.com'}
                   target='_blank'
+                  onClick={() => sendGAEvent('event', 'emailClick')}
                 >
                   <HiOutlineMail className='text-accent' />
                   Contact
@@ -66,6 +74,7 @@ const NavDrawer = () => {
                     'https://drive.google.com/file/d/19jhf328V_IUY3r6d4ir2O-Okmlxm57Vy/view?usp=drive_link'
                   }
                   target='_blank'
+                  onClick={() => sendGAEvent('event', 'resumeDownload')}
                 >
                   <RxReader className='text-accent' />
                   Resume
@@ -85,13 +94,17 @@ const NavDrawer = () => {
         <ul className='menu bg-base-100 min-h-full w-80 navdrawer'>
           {/* Sidebar content here */}
           <li className='text-2xl'>
-            <Link onClick={handleClick} href={'/'}>
+            <Link onClick={() => handleClick('homeNavClick')} href={'/'}>
               <BiHomeAlt className='text-accent' />
               William Dunn
             </Link>
           </li>
           <li>
-            <Link className='text-2xl' onClick={handleClick} href={'/projects'}>
+            <Link
+              className='text-2xl'
+              onClick={() => handleClick('projectNavClick')}
+              href={'/projects'}
+            >
               <LuPencilRuler className='text-accent' />
               Projects
             </Link>
@@ -99,7 +112,7 @@ const NavDrawer = () => {
           <li>
             <Link
               className='text-2xl'
-              onClick={handleClick}
+              onClick={() => handleClick('emailClick')}
               href={'mailto:will@wedward.com'}
               target='_blank'
             >
@@ -110,7 +123,7 @@ const NavDrawer = () => {
           <li>
             <Link
               className='text-2xl'
-              onClick={handleClick}
+              onClick={() => handleClick('resumeDownload')}
               href={
                 'https://drive.google.com/file/d/19jhf328V_IUY3r6d4ir2O-Okmlxm57Vy/view?usp=drive_link'
               }
