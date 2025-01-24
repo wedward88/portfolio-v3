@@ -5,11 +5,6 @@ import { projects } from './manifest';
 import Project from './Project';
 
 const ProjectsPage = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.5 } },
-  };
-
   const itemVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
@@ -17,7 +12,6 @@ const ProjectsPage = () => {
   return (
     <motion.div
       className='flex flex-col w-full items-center pb-10 xl:max-w-[50vw]'
-      // variants={containerVariants}
       initial='hidden'
       animate='visible'
     >
