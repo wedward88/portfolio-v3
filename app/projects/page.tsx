@@ -11,13 +11,13 @@ const ProjectsPage = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 100 },
-    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
   };
   return (
     <motion.div
       className='flex flex-col w-full items-center pb-10 xl:max-w-[50vw]'
-      variants={containerVariants}
+      // variants={containerVariants}
       initial='hidden'
       animate='visible'
     >
