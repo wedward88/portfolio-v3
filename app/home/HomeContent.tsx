@@ -4,50 +4,31 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import SkillsSection from '../skills/SkillsSection';
+import Svg from './Svg';
 
 const HomeContent = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.5 } },
-  };
-
-  const slideUpVariant = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-  };
-
-  const fadeInVariant = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-  };
-
   return (
-    <motion.div
-      className='flex flex-col justify-between'
-      variants={containerVariants}
-      initial='hidden'
-      animate='visible'
-    >
-      <motion.div className='flex mt-10 items-center' variants={fadeInVariant}>
-        <div className='text-5xl lg:text-7xl text-primary font-thin'>
+    <div className='flex flex-col justify-between lg:max-w-[40vw]'>
+      <div className='flex mt-10 items-center'>
+        <div className=' mr-10 text-5xl lg:text-7xl text-primary font-thin'>
           Hello!
         </div>
-        <div className='avatar ml-10'>
-          <div className='mask mask-hexagon w-[150px] lg:w-[200px]'>
-            <Image
-              id='headshot'
-              alt='headshot'
-              src='/images/headshot.jpg'
-              width='200'
-              height='200'
-            />
+        <div className='relative'>
+          <div className='avatar  z-20'>
+            <div className='mask mask-hexagon w-[150px] lg:w-[200px]'>
+              <Image
+                id='headshot'
+                alt='headshot'
+                src='/images/headshot.jpg'
+                width='200'
+                height='200'
+              />
+            </div>
           </div>
+          <Svg className='absolute z-10 -top-[8px] lg:-top-[11px] w-[150px] lg:w-[200px]' />
         </div>
-      </motion.div>
-      <motion.p
-        className='text-xl lg:text-2xl text-base-content mt-10'
-        variants={fadeInVariant}
-      >
+      </div>
+      <p className='text-xl lg:text-2xl text-base-content mt-10'>
         I&apos;m&nbsp;
         <a
           className='text-2xl text-secondary hover:text-primary'
@@ -57,33 +38,52 @@ const HomeContent = () => {
           William Dunn
         </a>
         , a software engineer and problem solver based out of Nashville, TN.
-      </motion.p>
+      </p>
       <div className='flex flex-col text-xl md:text-2xl lg:text-2xl mt-10 lg:mt-20'>
         <div className='flex justify-evenly items-center'>
           <div className='flex w-full flex-col'>
-            <motion.div
-              className='divider divider-accent text-2xl lg:text-3xl'
-              variants={slideUpVariant}
-            >
+            <div className='divider divider-accent text-2xl lg:text-3xl'>
               A little about me
-            </motion.div>
+            </div>
           </div>
         </div>
         <div>
-          <motion.p className='mt-5 lg:mt-20' variants={slideUpVariant}>
+          <motion.p className='mt-5 lg:mt-20'>
             Born and raised in the NYC area, my passion for technology started
             in middle school, when I needed to upgrade the family computer with
             a new video card. Many years later, equipped with a degree in
             Computer Information Systems, I&apos;ve dedicated my career to
             crafting clean, intuitive, and enjoyable web experiences.
           </motion.p>
-          <motion.p className='mt-5 lg:mt-10' variants={slideUpVariant}>
+          <motion.p
+            initial={{
+              opacity: 0,
+            }}
+            whileInView={{
+              opacity: 1,
+            }}
+            viewport={{
+              amount: 'all',
+            }}
+            className='mt-5 lg:mt-10'
+          >
             With over 9 years of IT experience and 5 years (and counting) in
             software development, I possess a strong foundation in
             problem-solving and analytical thinking, allowing me to effectively
             troubleshoot.
           </motion.p>
-          <motion.p className='mt-5 lg:mt-10' variants={slideUpVariant}>
+          <motion.p
+            initial={{
+              opacity: 0,
+            }}
+            whileInView={{
+              opacity: 1,
+            }}
+            viewport={{
+              amount: 'all',
+            }}
+            className='mt-5 lg:mt-10'
+          >
             I&apos;m always looking to learn new technologies, and expand my
             skill set. Please take a moment to check out some of my{' '}
             <Link
@@ -94,11 +94,11 @@ const HomeContent = () => {
             </Link>
           </motion.p>
         </div>
-        <motion.div variants={fadeInVariant}>
+        <div>
           <SkillsSection />
-        </motion.div>
+        </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
