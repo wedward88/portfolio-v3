@@ -24,6 +24,7 @@ const SkillsSection = () => {
           }}
           viewport={{
             amount: 'all',
+            once: true,
           }}
         >
           {leftHalf.map((skill, index) => (
@@ -52,6 +53,7 @@ const SkillsSection = () => {
           }}
           viewport={{
             amount: 'all',
+            once: true,
           }}
         >
           {rightHalf.map((skill, index) => (

@@ -1,9 +1,10 @@
 'use client';
 
 import clsx from 'clsx';
-import { motion } from 'motion/react';
+import { motion, useInView } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRef } from 'react';
 import { FaGithub } from 'react-icons/fa';
 
 import { sendGAEvent } from '@next/third-parties/google';
@@ -36,15 +37,32 @@ const ProjectCard = ({
   };
 
   const isOdd = idx % 2 === 0;
-  const containerVariants = {
+
+  const paragraphVariant = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.07 } },
+    visible: {
+      opacity: 1,
+      transition: { ease: 'easeIn', duration: 0.5 },
+    },
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, x: 100 },
-    visible: { opacity: 1, x: 0 },
+  const badgeVariant = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { staggerChildren: 0.1, ease: 'easeIn' },
+    },
   };
+
+  const itemVariant = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+    transition: { ease: 'easeIn' },
+  };
+
+  const eleRef = useRef(null);
+  const isInView = useInView(eleRef, { once: true, amount: 'some' });
 
   return (
     <div>
@@ -81,18 +99,24 @@ const ProjectCard = ({
               <FaGithub />
             </Link>
           </div>
-          <p>{desc}</p>
+          <motion.p
+            variants={paragraphVariant}
+            animate={isInView ? 'visible' : 'hidden'}
+          >
+            {desc}
+          </motion.p>
           <motion.div
             className='flex flex-wrap justify-center space-x-2'
-            variants={containerVariants}
+            variants={badgeVariant}
             initial='hidden'
-            animate='visible'
+            animate={isInView ? 'visible' : 'hidden'}
           >
             {badges.map((badge, i) => (
               <motion.div
                 key={`${name}-${i}`}
                 className='badge badge-secondary font-semibold mb-2'
-                variants={itemVariants}
+                variants={itemVariant}
+                ref={eleRef}
               >
                 {badge}
               </motion.div>
