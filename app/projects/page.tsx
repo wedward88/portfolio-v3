@@ -1,31 +1,45 @@
-import React from 'react';
+'use client';
+import { motion } from 'motion/react';
 
-import ProjectCard from './ProjectCard';
 import { projects } from './manifest';
+import Project from './Project';
 
 const ProjectsPage = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.5 } },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: { opacity: 1, y: 0 },
+  };
   return (
-    <div className='flex flex-col w-full items-center pb-20'>
+    <motion.div
+      className='flex flex-col w-full items-center pb-10 xl:max-w-[50vw]'
+      variants={containerVariants}
+      initial='hidden'
+      animate='visible'
+    >
       <div className='flex w-full flex-col'>
         <div className='divider divider-accent text-2xl'>My projects</div>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 mt-10 md:gap-20 lg:gap-20'>
-        {projects.map((project, idx) => (
-          <div className='animate-fadeIn' key={idx}>
-            <ProjectCard
-              name={project.name}
-              url={project.url}
-              title={project.title}
-              desc={project.desc}
-              badges={project.badges}
-              github={project.github}
-              link={project.link}
-            />
-          </div>
-        ))}
-        <div className='animate-fadeIn'></div>
-      </div>
-    </div>
+      {projects.map((project, idx) => (
+        <motion.div key={idx} variants={itemVariants}>
+          <Project
+            name={project.name}
+            url={project.url}
+            title={project.title}
+            desc={project.desc}
+            badges={project.badges}
+            github={project.github}
+            link={project.link}
+            idx={idx}
+            isLast={idx === projects.length - 1}
+          />
+        </motion.div>
+      ))}
+    </motion.div>
   );
 };
 
