@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import Link from 'next/link';
 
 import { skills } from './manifest';
@@ -14,7 +15,17 @@ const SkillsSection = () => {
         </div>
       </div>
       <div className='flex space-x-5 md:space-x-16 text-xl md:text-2xl pt-10 lg:py-20'>
-        <div>
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+          }}
+          viewport={{
+            amount: 'all',
+          }}
+        >
           {leftHalf.map((skill, index) => (
             <div
               key={index}
@@ -31,8 +42,18 @@ const SkillsSection = () => {
               </Link>
             </div>
           ))}
-        </div>
-        <div>
+        </motion.div>
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+          }}
+          viewport={{
+            amount: 'all',
+          }}
+        >
           {rightHalf.map((skill, index) => (
             <div
               key={index}
@@ -49,7 +70,7 @@ const SkillsSection = () => {
               </Link>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );
