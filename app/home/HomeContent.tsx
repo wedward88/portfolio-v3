@@ -2,7 +2,6 @@
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef } from 'react';
 
 import SkillsSection from '../skills/SkillsSection';
 import Svg from './Svg';
