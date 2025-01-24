@@ -1,7 +1,5 @@
 import { motion } from 'motion/react';
 
-("data:image/svg+xml,%3csvg  %3e%3cpath  fill='black' fill-rule='nonzero'/%3e%3c/svg%3e");
-
 type SvgTypes = {
   className?: string;
 };
