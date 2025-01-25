@@ -51,18 +51,16 @@ const ProjectCard = ({
   };
 
   const badgeVariant = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { y: 50 },
     visible: {
-      opacity: 1,
       y: 0,
-      transition: { staggerChildren: 0.1, ease: 'easeIn' },
+      transition: { staggerChildren: 0.05, ease: 'easeIn' },
     },
   };
 
   const itemVariant = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-    transition: { ease: 'easeIn' },
+    hidden: { y: 50, opacity: 0 },
+    visible: { y: 0, opacity: 1 },
   };
 
   const eleRef = useRef(null);
@@ -122,7 +120,7 @@ const ProjectCard = ({
                 variants={itemVariant}
                 ref={eleRef}
               >
-                <div key={`badge-${name}-${i}`}>{badge}</div>
+                {badge}
               </motion.div>
             ))}
           </motion.div>
