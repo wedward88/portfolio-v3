@@ -46,24 +46,24 @@ export const skills = [
     link: 'https://nextjs.org/',
   },
   {
-    name: 'Docker',
-    icon: FaDocker,
-    link: 'https://www.docker.com/',
-  },
-  {
-    name: 'Tailwind CSS',
+    name: 'Tailwind',
     icon: RiTailwindCssFill,
     link: 'https://tailwindcss.com/',
-  },
-  {
-    name: 'SQLAlchemy',
-    icon: SiSqlalchemy,
-    link: 'https://www.sqlalchemy.org/',
   },
   {
     name: 'Redux',
     icon: SiRedux,
     link: 'https://redux.js.org/',
+  },
+  {
+    name: 'Docker',
+    icon: FaDocker,
+    link: 'https://www.docker.com/',
+  },
+  {
+    name: 'SQLAlchemy',
+    icon: SiSqlalchemy,
+    link: 'https://www.sqlalchemy.org/',
   },
   {
     name: 'Flask',
