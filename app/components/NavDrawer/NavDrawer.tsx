@@ -1,4 +1,5 @@
 'use client';
+import { motion } from 'motion/react';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { BiHomeAlt } from 'react-icons/bi';
@@ -21,6 +22,22 @@ const NavDrawer = () => {
     sendGAEvent('event', eventName);
   };
 
+  const MotionUl = motion.ul;
+  const MotionLi = motion.li;
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, ease: 'easeIn' },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0 },
+  };
+
   return (
     <div className='drawer z-50 relative bg-base-300'>
       <input
@@ -35,7 +52,6 @@ const NavDrawer = () => {
         isOpen={isOpen}
       />
       <div className='drawer-content'>
-        {/* Navbar */}
         <div className='navbar bg-base-300 w-full justify-end'>
           <div className='hidden flex-none lg:block'>
             <ul className='menu menu-horizontal text-xl font-light text-primary'>
@@ -94,15 +110,19 @@ const NavDrawer = () => {
           aria-label='close sidebar'
           className='drawer-overlay'
         ></label>
-        <ul className='menu bg-base-100 min-h-full w-80 navdrawer'>
-          {/* Sidebar content here */}
-          <li className='text-2xl'>
+        <MotionUl
+          variants={containerVariants}
+          initial='hidden'
+          animate={isOpen ? 'visible' : 'hidden'}
+          className='menu bg-base-100 min-h-full w-80 navdrawer'
+        >
+          <MotionLi variants={itemVariants} className='text-2xl'>
             <Link onClick={() => handleClick('homeNavClick', true)} href={'/'}>
               <BiHomeAlt className='text-accent' />
-              William Dunn
+              Home
             </Link>
-          </li>
-          <li>
+          </MotionLi>
+          <MotionLi variants={itemVariants}>
             <Link
               className='text-2xl'
               onClick={() => handleClick('projectNavClick', true)}
@@ -111,8 +131,8 @@ const NavDrawer = () => {
               <LuPencilRuler className='text-accent' />
               Projects
             </Link>
-          </li>
-          <li>
+          </MotionLi>
+          <MotionLi variants={itemVariants}>
             <Link
               className='text-2xl'
               onClick={() => handleClick('emailClick', true)}
@@ -122,8 +142,8 @@ const NavDrawer = () => {
               <HiOutlineMail className='text-accent' />
               Contact
             </Link>
-          </li>
-          <li>
+          </MotionLi>
+          <MotionLi variants={itemVariants}>
             <Link
               className='text-2xl'
               onClick={() => handleClick('resumeDownload', true)}
@@ -135,8 +155,8 @@ const NavDrawer = () => {
               <RxReader className='text-accent' />
               Resume
             </Link>
-          </li>
-        </ul>
+          </MotionLi>
+        </MotionUl>
       </div>
     </div>
   );
