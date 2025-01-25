@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { motion, useInView } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { FaGithub } from 'react-icons/fa';
 
 import { sendGAEvent } from '@next/third-parties/google';
@@ -36,10 +36,6 @@ const ProjectCard = ({
     sendGAEvent('event', eventName);
   };
 
-  useEffect(() => {
-    console.log('Render');
-  });
-
   const isOdd = idx % 2 === 0;
 
   const paragraphVariant = {
@@ -59,8 +55,8 @@ const ProjectCard = ({
   };
 
   const itemVariant = {
-    hidden: { y: 50, opacity: 0 },
-    visible: { y: 0, opacity: 1 },
+    hidden: { y: 50, scale: 0 },
+    visible: { y: 0, scale: 1 },
   };
 
   const eleRef = useRef(null);
@@ -80,6 +76,7 @@ const ProjectCard = ({
           src={url}
           width={400}
           height={500}
+          priority
           className={`shadow-2xl transition-opacity duration-300 rounded-3xl md:mx-5 mb-5`}
         />
         <div className='flex flex-col space-y-5 items-start md:max-w-lg'>
@@ -104,6 +101,7 @@ const ProjectCard = ({
           <motion.p
             variants={paragraphVariant}
             animate={isInView ? 'visible' : 'hidden'}
+            initial='hidden'
           >
             {desc}
           </motion.p>
@@ -112,13 +110,13 @@ const ProjectCard = ({
             variants={badgeVariant}
             initial='hidden'
             animate={isInView ? 'visible' : 'hidden'}
+            ref={eleRef}
           >
             {badges.map((badge, i) => (
               <motion.div
                 key={`${name}-${i}`}
-                className='badge badge-secondary font-semibold mb-2'
+                className='badge badge-secondary font-semibold mb-2 will-change-transform'
                 variants={itemVariant}
-                ref={eleRef}
               >
                 {badge}
               </motion.div>
