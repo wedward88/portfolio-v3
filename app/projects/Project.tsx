@@ -118,7 +118,7 @@ const ProjectCard = ({
                 variants={itemVariant}
                 ref={eleRef}
               >
-                {badge}
+                <div key={`badge-${name}-${i}`}>{badge}</div>
               </motion.div>
             ))}
           </motion.div>
