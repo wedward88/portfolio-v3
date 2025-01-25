@@ -8,7 +8,7 @@ const SkillsSection = () => {
   const rightHalf = skills.slice(skills.length / 2);
 
   return (
-    <div className='text-center justify-items-center my-10 lg:my-20'>
+    <div className='flex flex-col text-center justify-center items-center my-10 lg:my-20'>
       <div className='flex w-full flex-col'>
         <div className='divider divider-accent lg:text-3xl'>
           My toolbox includes

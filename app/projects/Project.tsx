@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { motion, useInView } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { FaGithub } from 'react-icons/fa';
 
 import { sendGAEvent } from '@next/third-parties/google';
@@ -35,6 +35,10 @@ const ProjectCard = ({
   const handleLinkClick = (eventName: string) => {
     sendGAEvent('event', eventName);
   };
+
+  useEffect(() => {
+    console.log('Render');
+  });
 
   const isOdd = idx % 2 === 0;
 
