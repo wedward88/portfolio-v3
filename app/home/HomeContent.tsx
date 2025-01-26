@@ -31,7 +31,7 @@ const HomeContent = () => {
         >
           <div className='relative inline-block'>
             <span className='relative z-10'>Hello!</span>
-            <span className='absolute rounded-full inset-x-[-10] bottom-0 h-[50%] bg-base-100'></span>
+            <span className='absolute rounded-full inset-x-[-10px] bottom-0 h-[50%] bg-base-100'></span>
           </div>
         </motion.div>
         <div className='relative'>
