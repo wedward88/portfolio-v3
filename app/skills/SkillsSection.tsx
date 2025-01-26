@@ -10,9 +10,7 @@ const SkillsSection = () => {
   return (
     <div className='flex flex-col text-center justify-center items-center my-10 lg:my-20'>
       <div className='flex w-full flex-col'>
-        <div className='divider divider-accent lg:text-3xl'>
-          My toolbox includes
-        </div>
+        <div className='divider lg:text-3xl'>My toolbox includes</div>
       </div>
       <div className='flex space-x-5 md:space-x-16 text-xl md:text-2xl pt-10 lg:py-20'>
         <motion.div

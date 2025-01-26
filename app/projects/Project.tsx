@@ -9,37 +9,28 @@ import { FaGithub } from 'react-icons/fa';
 
 import { sendGAEvent } from '@next/third-parties/google';
 
-interface Props {
-  badges: Array<string>;
-  desc: string;
-  github: string;
-  link: string;
-  name: string;
-  title: string;
-  url: string;
-  idx: number;
+import { ProjectType } from './manifest';
+
+interface ProjectProps {
+  project: ProjectType;
   isLast: boolean;
 }
 
-const ProjectCard = ({
-  badges,
-  desc,
-  github,
-  link,
-  name,
-  title,
-  url,
-  idx,
-  isLast,
-}: Props) => {
+const Project = ({ project, isLast }: ProjectProps) => {
   const handleLinkClick = (eventName: string) => {
     sendGAEvent('event', eventName);
   };
 
-  const isOdd = idx % 2 === 0;
-
-  const paragraphVariant = {
+  const sectionVariant = {
     hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { ease: 'easeIn', duration: 0.5 },
+    },
+  };
+
+  const imageVariant = {
+    hidden: { opacity: 0.1 },
     visible: {
       opacity: 1,
       transition: { ease: 'easeIn', duration: 0.5 },
@@ -61,50 +52,65 @@ const ProjectCard = ({
 
   const eleRef = useRef(null);
   const isInView = useInView(eleRef, { once: true, amount: 'some' });
+  const imgRef = useRef(null);
+  const imgInView = useInView(imgRef, { amount: 'all' });
 
   return (
-    <div>
-      <div
-        className={clsx(
-          'flex flex-col items-center my-10  md:space-x-5',
-          isOdd ? 'md:flex-row' : 'md:flex-row-reverse'
-        )}
-      >
-        <Image
-          id={name}
-          alt={name}
-          src={url}
-          width={400}
-          height={500}
-          priority
-          className={`shadow-2xl transition-opacity duration-300 rounded-3xl md:mx-5 mb-5`}
-        />
-        <div className='flex flex-col space-y-5 items-start md:max-w-lg'>
-          <div className='flex items-center'>
-            <Link
-              className='hover:text-accent text-3xl'
-              href={link}
-              target='_blank'
-              onClick={() => handleLinkClick(`projectVisited:${title}`)}
-            >
-              {title}
-            </Link>
-            <Link
-              className='ml-5 text-2xl hover:text-accent'
-              target='_blank'
-              href={github}
-              onClick={() => handleLinkClick(`githubVisited:${github}`)}
-            >
-              <FaGithub />
-            </Link>
+    <section>
+      <div className='flex flex-col xl:mx-5  items-start md:items-center xl:space-x-5 xl:flex-row my-8 xl:my-16'>
+        <motion.div
+          variants={imageVariant}
+          initial='hidden'
+          animate={imgInView ? 'visible' : 'hidden'}
+        >
+          <Image
+            id={project.name}
+            alt={project.name}
+            src={project.url}
+            width={400}
+            height={500}
+            ref={imgRef}
+            priority
+            className={`shadow-2xl transition-opacity mb-10 duration-300 rounded-3xl  aspect-[3/2.2]`}
+          />
+        </motion.div>
+        <motion.section
+          variants={sectionVariant}
+          animate={isInView ? 'visible' : 'hidden'}
+          initial='hidden'
+          className='flex flex-col space-y-5 items-start md:items-center xl:items-start md:max-w-lg'
+        >
+          <div className='flex flex-col items-start'>
+            <div className='flex items-center'>
+              <Link
+                className='text-3xl project-title'
+                href={project.link}
+                target='_blank'
+                onClick={() =>
+                  handleLinkClick(`projectVisited:${project.title}`)
+                }
+              >
+                <div className='relative inline-block'>
+                  <span className='relative z-10 hover:text-primary'>
+                    {project.title}
+                  </span>
+                  <span className='absolute rounded-full inset-x-[-10px] bottom-[-90%] h-[140%] bg-base-100' />
+                </div>
+              </Link>
+            </div>
+            <span className='flex text-base-content text- z-10'>
+              {project.date}{' '}
+              <Link
+                className='ml-5 text-2xl hover:text-accent'
+                target='_blank'
+                href={project.github}
+                onClick={() => handleLinkClick(`githubVisited:${project.name}`)}
+              >
+                <FaGithub />
+              </Link>
+            </span>
           </div>
-          <motion.p
-            variants={paragraphVariant}
-            animate={isInView ? 'visible' : 'hidden'}
-            initial='hidden'
-          >
-            {desc}
-          </motion.p>
+          <motion.p className='md:text-xl'>{project.desc}</motion.p>
           <motion.div
             className='flex flex-wrap justify-center space-x-2'
             variants={badgeVariant}
@@ -112,21 +118,21 @@ const ProjectCard = ({
             animate={isInView ? 'visible' : 'hidden'}
             ref={eleRef}
           >
-            {badges.map((badge, i) => (
+            {project.badges.map((badge, i) => (
               <motion.div
-                key={`${name}-${i}`}
-                className='badge badge-secondary font-semibold mb-2 will-change-transform'
+                key={`${project.name}-${i}`}
+                className='badge badge-xl text-base-content mb-2 will-change-transform'
                 variants={itemVariant}
               >
                 {badge}
               </motion.div>
             ))}
           </motion.div>
-        </div>
+        </motion.section>
       </div>
       {!isLast && <div className='divider divider-base-100' />}
-    </div>
+    </section>
   );
 };
 
-export default ProjectCard;
+export default Project;

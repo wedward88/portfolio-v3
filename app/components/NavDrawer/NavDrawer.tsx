@@ -54,10 +54,10 @@ const NavDrawer = () => {
       <div className='drawer-content'>
         <div className='navbar bg-base-300 w-full justify-end'>
           <div className='hidden flex-none lg:block'>
-            <ul className='menu menu-horizontal text-xl font-light text-primary'>
+            <ul className='menu menu-horizontal text-xl font-light'>
               <li>
                 <Link
-                  className='hidden md:flex lg:flex hover:bg-base-300 hover:text-primary'
+                  className='hidden md:flex hover:bg-base-300 hover:text-primary'
                   href={'/'}
                   onClick={() => handleClick('homeNavClick', false)}
                 >
@@ -117,14 +117,18 @@ const NavDrawer = () => {
           className='menu bg-base-100 min-h-full w-80 navdrawer'
         >
           <MotionLi variants={itemVariants} className='text-2xl'>
-            <Link onClick={() => handleClick('homeNavClick', true)} href={'/'}>
+            <Link
+              className='text-2xl text-base-content'
+              onClick={() => handleClick('homeNavClick', true)}
+              href='/'
+            >
               <BiHomeAlt className='text-accent' />
               Home
             </Link>
           </MotionLi>
           <MotionLi variants={itemVariants}>
             <Link
-              className='text-2xl'
+              className='text-2xl text-base-content'
               onClick={() => handleClick('projectNavClick', true)}
               href={'/projects'}
             >
@@ -134,7 +138,7 @@ const NavDrawer = () => {
           </MotionLi>
           <MotionLi variants={itemVariants}>
             <Link
-              className='text-2xl'
+              className='text-2xl text-base-content'
               onClick={() => handleClick('emailClick', true)}
               href={'mailto:will@wedward.com'}
               target='_blank'
@@ -145,7 +149,7 @@ const NavDrawer = () => {
           </MotionLi>
           <MotionLi variants={itemVariants}>
             <Link
-              className='text-2xl'
+              className='text-2xl text-base-content'
               onClick={() => handleClick('resumeDownload', true)}
               href={
                 'https://drive.google.com/file/d/19jhf328V_IUY3r6d4ir2O-Okmlxm57Vy/view?usp=drive_link'

@@ -15,22 +15,9 @@ const ProjectsPage = () => {
       initial='hidden'
       animate='visible'
     >
-      <div className='flex w-full flex-col'>
-        <div className='divider divider-accent text-2xl'>My projects</div>
-      </div>
       {projects.map((project, idx) => (
         <motion.div key={idx} variants={itemVariants}>
-          <Project
-            name={project.name}
-            url={project.url}
-            title={project.title}
-            desc={project.desc}
-            badges={project.badges}
-            github={project.github}
-            link={project.link}
-            idx={idx}
-            isLast={idx === projects.length - 1}
-          />
+          <Project project={project} isLast={idx === projects.length - 1} />
         </motion.div>
       ))}
     </motion.div>

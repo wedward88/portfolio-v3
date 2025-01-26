@@ -9,12 +9,10 @@ const Svg = ({ className }: SvgTypes) => {
     hidden: {
       opacity: 0,
       pathLength: 0,
-      fill: 'rgba(190, 150, 230, 0)',
     },
     visible: {
       opacity: 1,
       pathLength: 1,
-      fill: 'rgba(190, 150, 230, 1)',
     },
   };
   return (

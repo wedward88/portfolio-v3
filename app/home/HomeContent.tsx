@@ -27,9 +27,12 @@ const HomeContent = () => {
         <motion.div
           {...transitionConfig}
           viewport={{ amount: 'all', once: true }}
-          className=' mr-10 text-5xl lg:text-7xl text-primary font-thin'
+          className='mr-20 text-5xl lg:text-7xl font-thin'
         >
-          Hello!
+          <div className='relative inline-block'>
+            <span className='relative z-10'>Hello!</span>
+            <span className='absolute rounded-full inset-x-[-10] bottom-0 h-[50%] bg-base-100'></span>
+          </div>
         </motion.div>
         <div className='relative'>
           <div className='avatar  z-20'>
@@ -40,10 +43,11 @@ const HomeContent = () => {
                 src='/images/headshot.jpg'
                 width='200'
                 height='200'
+                priority
               />
             </div>
           </div>
-          <Svg className='absolute z-10 -top-[8px] lg:-top-[11px] w-[150px] lg:w-[200px]' />
+          <Svg className='fill-accent absolute z-10 -top-[8px] lg:-top-[11px] w-[150px] lg:w-[200px]' />
         </div>
       </div>
       <motion.p
@@ -53,7 +57,7 @@ const HomeContent = () => {
       >
         I&apos;m&nbsp;
         <a
-          className='text-2xl text-secondary hover:text-primary'
+          className='hover:decoration-primary hover:underline underline-offset-8 text-primary'
           href='https://www.linkedin.com/in/wedward88/'
           target='_blank'
         >
@@ -67,7 +71,7 @@ const HomeContent = () => {
             <motion.div
               {...transitionConfig}
               viewport={{ amount: 'all', once: true }}
-              className='divider divider-accent text-2xl lg:text-3xl'
+              className='divider text-2xl lg:text-3xl'
             >
               A little about me
             </motion.div>
@@ -103,7 +107,7 @@ const HomeContent = () => {
             I&apos;m always looking to learn new technologies, and expand my
             skill set. Please take a moment to check out some of my{' '}
             <Link
-              className='text-xl lg:text-3xl text-secondary hover:text-primary'
+              className='hover:decoration-primary hover:underline text-primary underline-offset-8'
               href={'/projects'}
             >
               projects!
