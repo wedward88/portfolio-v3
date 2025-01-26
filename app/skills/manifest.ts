@@ -31,14 +31,14 @@ export const skills = [
     link: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
   },
   {
-    name: 'Html5',
-    icon: FaHtml5,
-    link: 'https://developer.mozilla.org/en-US/docs/Glossary/HTML5',
-  },
-  {
     name: 'PostgreSQL',
     icon: BiLogoPostgresql,
     link: 'https://www.postgresql.org/',
+  },
+  {
+    name: 'SQLAlchemy',
+    icon: SiSqlalchemy,
+    link: 'https://www.sqlalchemy.org/',
   },
   {
     name: 'NextJS',
@@ -61,9 +61,9 @@ export const skills = [
     link: 'https://www.docker.com/',
   },
   {
-    name: 'SQLAlchemy',
-    icon: SiSqlalchemy,
-    link: 'https://www.sqlalchemy.org/',
+    name: 'Html5',
+    icon: FaHtml5,
+    link: 'https://developer.mozilla.org/en-US/docs/Glossary/HTML5',
   },
   {
     name: 'Flask',

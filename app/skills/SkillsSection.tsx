@@ -8,23 +8,24 @@ const SkillsSection = () => {
   const rightHalf = skills.slice(skills.length / 2);
 
   return (
-    <div className='flex flex-col text-center justify-center items-center my-10 lg:my-20'>
+    <motion.section
+      initial={{
+        opacity: 0,
+      }}
+      whileInView={{
+        opacity: 1,
+      }}
+      viewport={{
+        amount: 0.5,
+        once: true,
+      }}
+      className='flex flex-col text-center justify-center items-center my-10 lg:my-20'
+    >
       <div className='flex w-full flex-col'>
-        <div className='divider lg:text-3xl'>My toolbox includes</div>
+        <div className='divider lg:text-2xl'>My toolbox includes</div>
       </div>
-      <div className='flex space-x-5 md:space-x-16 text-xl md:text-2xl pt-10 lg:py-20'>
-        <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          whileInView={{
-            opacity: 1,
-          }}
-          viewport={{
-            amount: 'all',
-            once: true,
-          }}
-        >
+      <div className='flex space-x-5 md:space-x-16 text-xl md:text-3xl  pt-10 lg:py-20'>
+        <div>
           {leftHalf.map((skill, index) => (
             <div
               key={index}
@@ -41,19 +42,8 @@ const SkillsSection = () => {
               </Link>
             </div>
           ))}
-        </motion.div>
-        <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          whileInView={{
-            opacity: 1,
-          }}
-          viewport={{
-            amount: 'all',
-            once: true,
-          }}
-        >
+        </div>
+        <div>
           {rightHalf.map((skill, index) => (
             <div
               key={index}
@@ -70,9 +60,9 @@ const SkillsSection = () => {
               </Link>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
-    </div>
+    </motion.section>
   );
 };
 
