@@ -1,6 +1,5 @@
 'use client';
 
-import clsx from 'clsx';
 import { motion, useInView } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
