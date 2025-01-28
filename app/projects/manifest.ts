@@ -35,7 +35,7 @@ export const projects = [
     name: 'portfolio',
     date: 'November 2024',
     url: '/images/portfolio.jpg',
-    title: 'My Portfolio',
+    title: 'Portfolio',
     desc: "I was once told that a software engineer isn't a designer. While I agree, I didn't want to settle for a cookie cutter portfolio. I wanted to create something unique, and personalized. This page is the result, deployed using Github Pages.",
     badges: [
       'NextJS',

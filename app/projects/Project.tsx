@@ -56,28 +56,36 @@ const Project = ({ project, isLast }: ProjectProps) => {
 
   return (
     <section>
-      <div className='flex flex-col xl:mx-5  items-start md:items-center xl:space-x-5 xl:flex-row my-8 xl:my-16'>
+      <div className='flex flex-col  items-center md:items-center 2xl:space-x-10 2xl:flex-row my-8 2xl:my-16'>
         <motion.div
           variants={imageVariant}
           initial='hidden'
           animate={imgInView ? 'visible' : 'hidden'}
+          whileHover={{ scale: 1.05 }}
         >
-          <Image
-            id={project.name}
-            alt={project.name}
-            src={project.url}
-            width={400}
-            height={500}
-            ref={imgRef}
-            priority
-            className={`shadow-2xl transition-opacity mb-10 duration-300 rounded-3xl  aspect-[3/2.2]`}
-          />
+          <Link
+            className='text-3xl project-title'
+            href={project.link}
+            target='_blank'
+            onClick={() => handleLinkClick(`projectVisited:${project.title}`)}
+          >
+            <Image
+              id={project.name}
+              alt={project.name}
+              src={project.url}
+              width={400}
+              height={500}
+              ref={imgRef}
+              priority
+              className={`shadow-2xl w-full transition-opacity mb-10 duration-300 rounded-3xl object-cover aspect-[3/2.2]`}
+            />
+          </Link>
         </motion.div>
         <motion.section
           variants={sectionVariant}
           animate={isInView ? 'visible' : 'hidden'}
           initial='hidden'
-          className='flex flex-col space-y-5 items-start md:items-center xl:items-start md:max-w-lg'
+          className='flex flex-col w-full space-y-5 items-center 2xl:items-center 2xl:max-w-lg'
         >
           <div className='flex flex-col items-start'>
             <div className='flex items-center'>
