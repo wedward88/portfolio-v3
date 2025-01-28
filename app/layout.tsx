@@ -32,7 +32,7 @@ export default function RootLayout({
       <body>
         <NavDrawer />
         <div
-          className={`flex px-[10%] lg:px-[20%] lg:pt-[5%] justify-center bg-base-300 dark:[data-theme=dim] ${roboto.className}`}
+          className={`flex px-[10%] xl:px-[20%] xl:pt-[5%] justify-center bg-base-300 dark:[data-theme=dim] ${roboto.className}`}
         >
           {children}
         </div>
