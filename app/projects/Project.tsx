@@ -61,7 +61,7 @@ const Project = ({ project, isLast }: ProjectProps) => {
           variants={imageVariant}
           initial='hidden'
           animate={imgInView ? 'visible' : 'hidden'}
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.05, opacity: 1 }}
         >
           <Link
             className='text-3xl project-title'
