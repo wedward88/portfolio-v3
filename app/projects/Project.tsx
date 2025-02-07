@@ -56,7 +56,7 @@ const Project = ({ project, isLast }: ProjectProps) => {
 
   return (
     <section>
-      <div className='flex flex-col items-center 2xl:space-x-10 2xl:flex-row my-8 2xl:my-16'>
+      <div className='flex flex-col items-center xl:space-x-10 xl:flex-row my-8 xl:my-16'>
         <motion.div
           variants={imageVariant}
           initial='hidden'
@@ -77,7 +77,7 @@ const Project = ({ project, isLast }: ProjectProps) => {
               height={500}
               ref={imgRef}
               priority
-              className={`shadow-2xl w-full transition-opacity mb-10 duration-300 rounded-3xl object-cover aspect-[3/2.2]`}
+              className={`shadow-2xl w-full transition-opacity md:max-w-[40vw] mb-10 duration-300 rounded-3xl object-cover aspect-[3/2.2]`}
             />
           </Link>
         </motion.div>
@@ -105,7 +105,7 @@ const Project = ({ project, isLast }: ProjectProps) => {
                 </div>
               </Link>
             </div>
-            <span className='flex text-base-content text- z-10'>
+            <span className='flex text-base-content z-10'>
               {project.date}{' '}
               <Link
                 className='ml-5 text-2xl hover:text-accent'
