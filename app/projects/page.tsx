@@ -11,7 +11,7 @@ const ProjectsPage = () => {
   };
   return (
     <motion.div
-      className='flex flex-col w-full items-center pb-10 xl:max-w-[50vw]'
+      className='flex flex-col w-full items-center pb-10 xl:max-w-[30vw]'
       initial='hidden'
       animate='visible'
     >

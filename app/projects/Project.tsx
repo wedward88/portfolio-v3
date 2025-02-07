@@ -56,7 +56,7 @@ const Project = ({ project, isLast }: ProjectProps) => {
 
   return (
     <section>
-      <div className='flex flex-col  items-center md:items-center 2xl:space-x-10 2xl:flex-row my-8 2xl:my-16'>
+      <div className='flex flex-col items-center 2xl:space-x-10 2xl:flex-row my-8 2xl:my-16'>
         <motion.div
           variants={imageVariant}
           initial='hidden'
