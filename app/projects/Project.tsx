@@ -56,7 +56,7 @@ const Project = ({ project, isLast }: ProjectProps) => {
 
   return (
     <section>
-      <div className='flex flex-col items-center xl:space-x-10 xl:flex-row my-8 xl:my-16'>
+      <div className='flex flex-col items-center my-8 xl:items-start xl:space-x-10 xl:flex-row xl:my-16'>
         <motion.div
           variants={imageVariant}
           initial='hidden'
@@ -77,7 +77,7 @@ const Project = ({ project, isLast }: ProjectProps) => {
               height={500}
               ref={imgRef}
               priority
-              className={`shadow-2xl w-full transition-opacity md:max-w-[40vw] mb-10 duration-300 rounded-3xl object-cover aspect-[3/2.2]`}
+              className={`shadow-2xl w-full h-auto transition-opacity md:max-w-[40vw] mb-10 duration-300 rounded-3xl object-fit object-center aspect-[3/2]`}
             />
           </Link>
         </motion.div>
@@ -85,37 +85,37 @@ const Project = ({ project, isLast }: ProjectProps) => {
           variants={sectionVariant}
           animate={isInView ? 'visible' : 'hidden'}
           initial='hidden'
-          className='flex flex-col w-full space-y-5 items-center 2xl:items-center 2xl:max-w-lg'
+          className='flex flex-col w-full space-y-5 max-w-lg items-center'
         >
           <div className='flex flex-col items-start'>
-            <div className='flex items-center'>
-              <Link
-                className='text-3xl project-title'
-                href={project.link}
-                target='_blank'
-                onClick={() =>
-                  handleLinkClick(`projectVisited:${project.title}`)
-                }
-              >
+            <div className='flex items-start'>
                 <div className='relative inline-block'>
-                  <span className='relative z-10 hover:text-primary'>
-                    {project.title}
+                  <Link
+                    className='text-3xl project-title'
+                    href={project.link}
+                    target='_blank'
+                    onClick={() =>
+                      handleLinkClick(`projectVisited:${project.title}`)
+                    }
+                  >
+                    <span className='relative z-10 hover:text-primary'>
+                      {project.title}
+                    </span>
+                  </Link>
+                  <span className='relative flex text-base-content z-10'>
+                    {project.date}
+                    <Link
+                      className='ml-5 text-2xl hover:text-accent z-10'
+                      target='_blank'
+                      href={project.github}
+                      onClick={() => handleLinkClick(`githubVisited:${project.name}`)}
+                    >
+                      <FaGithub />
+                    </Link>
                   </span>
-                  <span className='absolute rounded-full inset-x-[-10px] bottom-[-90%] h-[140%] bg-base-100' />
+                  <span className='absolute z-0 rounded-full -left-4 bottom-[-10%] w-[120%] h-[80%] bg-base-100' />
                 </div>
-              </Link>
             </div>
-            <span className='flex text-base-content z-10'>
-              {project.date}{' '}
-              <Link
-                className='ml-5 text-2xl hover:text-accent'
-                target='_blank'
-                href={project.github}
-                onClick={() => handleLinkClick(`githubVisited:${project.name}`)}
-              >
-                <FaGithub />
-              </Link>
-            </span>
           </div>
           <motion.p className='md:text-xl'>{project.desc}</motion.p>
           <motion.div

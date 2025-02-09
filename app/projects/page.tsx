@@ -11,12 +11,11 @@ const ProjectsPage = () => {
   };
   return (
     <motion.div
-      className='flex flex-col w-full items-center pb-10 xl:max-w-[50vw]'
       initial='hidden'
       animate='visible'
     >
       {projects.map((project, idx) => (
-        <motion.div key={idx} variants={itemVariants}>
+        <motion.div key={idx} initial='hidden' animate='visible' variants={itemVariants}>
           <Project project={project} isLast={idx === projects.length - 1} />
         </motion.div>
       ))}
