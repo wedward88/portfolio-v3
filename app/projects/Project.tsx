@@ -77,7 +77,7 @@ const Project = ({ project, isLast }: ProjectProps) => {
               height={500}
               ref={imgRef}
               priority
-              className={`shadow-2xl w-full h-auto transition-opacity md:max-w-[40vw] mb-10 duration-300 rounded-3xl object-fit object-center aspect-[3/2]`}
+              className={`shadow-2xl w-full md:max-w-[60vw] h-auto transition-opacity 2xl:max-w-[20vw] mb-10 duration-300 rounded-3xl object-fit object-center aspect-[3/2]`}
             />
           </Link>
         </motion.div>
@@ -89,32 +89,34 @@ const Project = ({ project, isLast }: ProjectProps) => {
         >
           <div className='flex flex-col items-start'>
             <div className='flex items-start'>
-                <div className='relative inline-block'>
+              <div className='relative inline-block'>
+                <Link
+                  className='text-3xl project-title'
+                  href={project.link}
+                  target='_blank'
+                  onClick={() =>
+                    handleLinkClick(`projectVisited:${project.title}`)
+                  }
+                >
+                  <span className='relative z-10 hover:text-primary'>
+                    {project.title}
+                  </span>
+                </Link>
+                <span className='relative flex text-base-content z-10'>
+                  {project.date}
                   <Link
-                    className='text-3xl project-title'
-                    href={project.link}
+                    className='ml-5 text-2xl hover:text-accent z-10'
                     target='_blank'
+                    href={project.github}
                     onClick={() =>
-                      handleLinkClick(`projectVisited:${project.title}`)
+                      handleLinkClick(`githubVisited:${project.name}`)
                     }
                   >
-                    <span className='relative z-10 hover:text-primary'>
-                      {project.title}
-                    </span>
+                    <FaGithub />
                   </Link>
-                  <span className='relative flex text-base-content z-10'>
-                    {project.date}
-                    <Link
-                      className='ml-5 text-2xl hover:text-accent z-10'
-                      target='_blank'
-                      href={project.github}
-                      onClick={() => handleLinkClick(`githubVisited:${project.name}`)}
-                    >
-                      <FaGithub />
-                    </Link>
-                  </span>
-                  <span className='absolute z-0 rounded-full -left-4 bottom-[-10%] w-[120%] h-[80%] bg-base-100' />
-                </div>
+                </span>
+                <span className='absolute z-0 rounded-full -left-4 bottom-[-10%] w-[120%] h-[80%] bg-base-100' />
+              </div>
             </div>
           </div>
           <motion.p className='md:text-xl'>{project.desc}</motion.p>
