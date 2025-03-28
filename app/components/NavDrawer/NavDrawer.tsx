@@ -90,7 +90,7 @@ const NavDrawer = () => {
                 <Link
                   className='hover:bg-base-300 hover:text-primary'
                   href={
-                    'https://drive.google.com/file/d/1dNRa_L5hxITHF3k3bqte5DwiGnSHrM2b/view?usp=sharing'
+                    'https://drive.google.com/file/d/14vxFI58pPfdFRv94sbFCpsqnTD3itafI/view?usp=sharing'
                   }
                   target='_blank'
                   onClick={() => handleClick('resumeDownload', false)}
@@ -152,7 +152,7 @@ const NavDrawer = () => {
               className='text-2xl text-base-content'
               onClick={() => handleClick('resumeDownload', true)}
               href={
-                'https://drive.google.com/file/d/19jhf328V_IUY3r6d4ir2O-Okmlxm57Vy/view?usp=drive_link'
+                'https://drive.google.com/file/d/14vxFI58pPfdFRv94sbFCpsqnTD3itafI/view?usp=sharing'
               }
               target='_blank'
             >
