@@ -7,7 +7,9 @@ import { sendGAEvent } from '@next/third-parties/google';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
-const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+// Formspree form IDs are public (they ship in the client). Env override is optional.
+const FORMSPREE_ID =
+  process.env.NEXT_PUBLIC_FORMSPREE_ID?.trim() || 'xqervknj';
 
 const ContactForm = () => {
   const [status, setStatus] = useState<Status>('idle');
@@ -26,6 +28,10 @@ const ContactForm = () => {
 
     const form = event.currentTarget;
     const data = new FormData(form);
+    // Help Formspree/reply routing
+    if (!data.get('_replyto') && data.get('email')) {
+      data.set('_replyto', String(data.get('email')));
+    }
 
     setStatus('submitting');
     setErrorMessage('');
