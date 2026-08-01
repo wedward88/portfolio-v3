@@ -27,7 +27,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang='en' suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('portfolio-theme');document.documentElement.setAttribute('data-theme',t==='nord'||t==='dim'?t:'dim');}catch(e){document.documentElement.setAttribute('data-theme','dim');}})();`,
+          }}
+        />
+      </head>
       <GoogleAnalytics gaId='G-QLYGZFERTY' />
       <body className='flex min-h-screen flex-col'>
         <NavDrawer />

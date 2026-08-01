@@ -1,37 +1,38 @@
 'use client';
+
 import React from 'react';
 
 interface Props {
   handleClick: () => void;
   isOpen: boolean;
 }
-const HamButton = (props: Props) => {
-  const { handleClick, isOpen } = props;
+
+const HamButton = ({ handleClick, isOpen }: Props) => {
   return (
     <button
+      type='button'
       aria-expanded={isOpen}
-      aria-label='Toggle navigation'
+      aria-label={isOpen ? 'Close navigation' : 'Open navigation'}
       onClick={handleClick}
-      className='flex flex-col z-10 pt-10 px-5 relative drawer-button bg-transparent lg:hidden'
+      className='btn btn-ghost btn-square fixed left-2 top-2 z-[60] h-10 min-h-0 w-10 border-0 bg-transparent hover:bg-base-100/60 sm:left-4 lg:hidden'
     >
-      <span
-        className={`bg-primary block transition-all duration-300 ease-out
-                      h-0.5 w-6 rounded-sm ${
-                        isOpen ? 'rotate-45 translate-y-1' : '-translate-y-0.5'
-                      }`}
-      ></span>
-      <span
-        className={`bg-secondary block transition-all duration-300 ease-out
-                      h-0.5 w-6 rounded-sm my-0.5 ${
-                        isOpen ? 'opacity-0' : 'opacity-100'
-                      }`}
-      ></span>
-      <span
-        className={`bg-accent block transition-all duration-300 ease-out
-                      h-0.5 w-6 rounded-sm ${
-                        isOpen ? '-rotate-45 -translate-y-1' : 'translate-y-0.5'
-                      }`}
-      ></span>
+      <span className='flex w-5 flex-col items-center gap-1.5'>
+        <span
+          className={`block h-0.5 w-full origin-center rounded-sm bg-primary transition-all duration-300 ease-out ${
+            isOpen ? 'translate-y-2 rotate-45' : ''
+          }`}
+        />
+        <span
+          className={`block h-0.5 w-full rounded-sm bg-secondary transition-all duration-300 ease-out ${
+            isOpen ? 'scale-x-0 opacity-0' : 'opacity-100'
+          }`}
+        />
+        <span
+          className={`block h-0.5 w-full origin-center rounded-sm bg-accent transition-all duration-300 ease-out ${
+            isOpen ? '-translate-y-2 -rotate-45' : ''
+          }`}
+        />
+      </span>
     </button>
   );
 };

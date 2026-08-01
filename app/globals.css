@@ -5,3 +5,11 @@
 #headshot {
   height: 150%;
 }
+
+/* Kill DaisyUI menu press/focus flash on nav links */
+.navbar .menu li > a:active,
+.navbar .menu li > a:focus,
+.navdrawer.menu li > a:active,
+.navdrawer.menu li > a:focus {
+  background-color: transparent !important;
+}

@@ -1,10 +1,12 @@
 'use client';
+
 import { motion } from 'motion/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
 import { BiHomeAlt } from 'react-icons/bi';
 import { HiOutlineMail } from 'react-icons/hi';
+import { IconType } from 'react-icons';
 import { LuPencilRuler } from 'react-icons/lu';
 import { RxReader } from 'react-icons/rx';
 
@@ -13,18 +15,61 @@ import { sendGAEvent } from '@next/third-parties/google';
 import ThemeToggle from '../ThemeToggle';
 import HamButton from './HamButton';
 
+type NavItem = {
+  href: string;
+  label: string;
+  icon: IconType;
+  event: string;
+  match: (pathname: string) => boolean;
+};
+
+const navItems: NavItem[] = [
+  {
+    href: '/',
+    label: 'Home',
+    icon: BiHomeAlt,
+    event: 'homeNavClick',
+    match: (pathname) => pathname === '/',
+  },
+  {
+    href: '/projects',
+    label: 'Projects',
+    icon: LuPencilRuler,
+    event: 'projectNavClick',
+    match: (pathname) => pathname === '/projects',
+  },
+  {
+    href: '/contact',
+    label: 'Contact',
+    icon: HiOutlineMail,
+    event: 'contactNavClick',
+    match: (pathname) => pathname === '/contact',
+  },
+  {
+    href: '/resume',
+    label: 'Resume',
+    icon: RxReader,
+    event: 'resumeNavClick',
+    match: (pathname) => pathname === '/resume',
+  },
+];
+
 const NavDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  const isHome = pathname === '/';
-  const isProjects = pathname === '/projects';
-  const isContact = pathname === '/contact';
-  const isResume = pathname === '/resume';
 
-  const handleClick = (eventName: string, navDrawer: boolean) => {
-    if (navDrawer) {
-      setIsOpen(!isOpen);
-    }
+  const toggleDrawer = () => {
+    setIsOpen((open) => !open);
+    sendGAEvent('event', 'hamburgerMenuClick');
+  };
+
+  const handleNavClick = (
+    eventName: string,
+    fromDrawer: boolean,
+    event?: React.MouseEvent<HTMLAnchorElement>
+  ) => {
+    if (fromDrawer) setIsOpen(false);
+    event?.currentTarget.blur();
     sendGAEvent('event', eventName);
   };
 
@@ -45,16 +90,16 @@ const NavDrawer = () => {
   };
 
   const desktopLinkClass = (active: boolean) =>
-    `hover:bg-base-300 hover:text-primary ${
+    `gap-2 hover:bg-transparent hover:text-primary focus:!bg-transparent active:!bg-transparent ${
       active
-        ? 'text-primary bg-base-100/60 underline underline-offset-8 decoration-primary'
+        ? 'text-primary underline underline-offset-4 decoration-primary'
         : ''
     }`;
 
   const mobileLinkClass = (active: boolean) =>
-    `text-2xl ${
+    `gap-3 text-2xl hover:bg-transparent focus:!bg-transparent active:!bg-transparent ${
       active
-        ? 'text-primary bg-base-300/60 underline underline-offset-8 decoration-primary'
+        ? 'text-primary underline underline-offset-4 decoration-primary'
         : 'text-base-content'
     }`;
 
@@ -65,66 +110,43 @@ const NavDrawer = () => {
         type='checkbox'
         className='drawer-toggle'
         checked={isOpen}
-        onChange={() => handleClick('hamburgerMenuClick', true)}
+        onChange={toggleDrawer}
       />
-      <HamButton
-        handleClick={() => handleClick('hamburgerMenuClick', true)}
-        isOpen={isOpen}
-      />
+      <HamButton handleClick={toggleDrawer} isOpen={isOpen} />
       <div className='drawer-content'>
-        <div className='navbar bg-base-300 w-full justify-end'>
-          <div className='hidden flex-none lg:block'>
-            <ul className='menu menu-horizontal text-xl font-light'>
-              <li>
-                <Link
-                  className={`hidden md:flex ${desktopLinkClass(isHome)}`}
-                  href={'/'}
-                  aria-current={isHome ? 'page' : undefined}
-                  onClick={() => handleClick('homeNavClick', false)}
-                >
-                  <BiHomeAlt className='text-accent' />
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={desktopLinkClass(isProjects)}
-                  href={'/projects'}
-                  aria-current={isProjects ? 'page' : undefined}
-                  onClick={() => handleClick('projectNavClick', false)}
-                >
-                  <LuPencilRuler className='text-accent' />
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={desktopLinkClass(isContact)}
-                  href={'/contact'}
-                  aria-current={isContact ? 'page' : undefined}
-                  onClick={() => handleClick('contactNavClick', false)}
-                >
-                  <HiOutlineMail className='text-accent' />
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={desktopLinkClass(isResume)}
-                  href={'/resume'}
-                  aria-current={isResume ? 'page' : undefined}
-                  onClick={() => handleClick('resumeNavClick', false)}
-                >
-                  <RxReader className='text-accent' />
-                  Resume
-                </Link>
-              </li>
-            </ul>
+        <div className='navbar min-h-14 w-full bg-base-300 px-2 sm:px-4'>
+          <div className='navbar-start'>
+            {/* Spacer keeps bar alignment; real button is fixed above the drawer */}
+            <span className='inline-block h-10 w-10 lg:hidden' aria-hidden />
           </div>
-          <ThemeToggle />
+          <div className='navbar-end gap-1'>
+            <div className='hidden flex-none lg:block'>
+              <ul className='menu menu-horizontal gap-2 bg-transparent p-0 text-lg font-light'>
+                {navItems.map((item) => {
+                  const active = item.match(pathname);
+                  return (
+                    <li key={item.href} className='bg-transparent'>
+                      <Link
+                        className={desktopLinkClass(active)}
+                        href={item.href}
+                        aria-current={active ? 'page' : undefined}
+                        onClick={(event) =>
+                          handleNavClick(item.event, false, event)
+                        }
+                      >
+                        <item.icon className='text-lg text-accent' />
+                        {item.label}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+            <ThemeToggle />
+          </div>
         </div>
       </div>
-      <div className='drawer-side'>
+      <div className='drawer-side z-50'>
         <label
           htmlFor='my-drawer-3'
           aria-label='close sidebar'
@@ -134,52 +156,24 @@ const NavDrawer = () => {
           variants={containerVariants}
           initial='hidden'
           animate={isOpen ? 'visible' : 'hidden'}
-          className='menu bg-base-100 min-h-full w-80 navdrawer'
+          className='menu min-h-full w-80 bg-transparent bg-base-100 p-2 navdrawer'
         >
-          <MotionLi variants={itemVariants} className='text-2xl'>
-            <Link
-              className={mobileLinkClass(isHome)}
-              onClick={() => handleClick('homeNavClick', true)}
-              href='/'
-              aria-current={isHome ? 'page' : undefined}
-            >
-              <BiHomeAlt className='text-accent' />
-              Home
-            </Link>
-          </MotionLi>
-          <MotionLi variants={itemVariants}>
-            <Link
-              className={mobileLinkClass(isProjects)}
-              onClick={() => handleClick('projectNavClick', true)}
-              href={'/projects'}
-              aria-current={isProjects ? 'page' : undefined}
-            >
-              <LuPencilRuler className='text-accent' />
-              Projects
-            </Link>
-          </MotionLi>
-          <MotionLi variants={itemVariants}>
-            <Link
-              className={mobileLinkClass(isContact)}
-              onClick={() => handleClick('contactNavClick', true)}
-              href={'/contact'}
-              aria-current={isContact ? 'page' : undefined}
-            >
-              <HiOutlineMail className='text-accent' />
-              Contact
-            </Link>
-          </MotionLi>
-          <MotionLi variants={itemVariants}>
-            <Link
-              className={mobileLinkClass(isResume)}
-              onClick={() => handleClick('resumeNavClick', true)}
-              href={'/resume'}
-              aria-current={isResume ? 'page' : undefined}
-            >
-              <RxReader className='text-accent' />
-              Resume
-            </Link>
-          </MotionLi>
+          {navItems.map((item) => {
+            const active = item.match(pathname);
+            return (
+              <MotionLi key={item.href} variants={itemVariants}>
+                <Link
+                  className={mobileLinkClass(active)}
+                  onClick={(event) => handleNavClick(item.event, true, event)}
+                  href={item.href}
+                  aria-current={active ? 'page' : undefined}
+                >
+                  <item.icon className='text-xl text-accent' />
+                  {item.label}
+                </Link>
+              </MotionLi>
+            );
+          })}
         </MotionUl>
       </div>
     </div>
