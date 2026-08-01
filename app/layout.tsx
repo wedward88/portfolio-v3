@@ -29,10 +29,10 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <GoogleAnalytics gaId='G-QLYGZFERTY' />
-      <body>
+      <body className='flex min-h-screen flex-col'>
         <NavDrawer />
         <div
-          className={`flex px-[10%] xl:px-[20%] xl:pt-[5%] justify-center bg-base-300 dark:[data-theme=dim] ${roboto.className}`}
+          className={`flex flex-1 px-[10%] xl:px-[20%] xl:pt-[5%] justify-center bg-base-300 dark:[data-theme=dim] ${roboto.className}`}
         >
           {children}
         </div>
