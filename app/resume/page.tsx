@@ -23,7 +23,7 @@ const ResumePage = () => {
       transition={{ ease: 'easeIn', duration: 0.4 }}
     >
       <header className='mb-6 flex flex-col gap-5 pt-4 sm:mb-8 sm:flex-row sm:items-end sm:justify-between md:pt-0'>
-        <div className='relative inline-block'>
+        <div className='relative inline-block w-fit self-start'>
           <h1 className='relative z-10 text-4xl font-thin md:text-5xl lg:text-6xl'>
             Resume
           </h1>
