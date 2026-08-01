@@ -16,7 +16,7 @@ export const projects = [
     date: 'January 2025',
     url: '/images/servicecycle.png',
     title: 'ServiceCycle',
-    desc: 'A full stack application for tracking subscription services, and searching for TV shows and movies. Deployed on a dedicated server running Apache2.',
+    desc: 'Track streaming subscriptions and find where to watch. Manage monthly costs, search TV and movies by your plans, and keep a drag-reorderable watch list. Deployed on a dedicated server running Apache2.',
     badges: [
       'NextJS',
       'TypeScript',
@@ -34,7 +34,7 @@ export const projects = [
   {
     name: 'portfolio',
     date: 'November 2024',
-    url: '/images/portfolio.jpg',
+    url: '/images/portfolio.png',
     title: 'Portfolio',
     desc: "I was once told that a software engineer isn't a designer. While I agree, I didn't want to settle for a cookie cutter portfolio. I wanted to create something unique, and personalized. This page is the result, deployed using Github Pages.",
     badges: [
