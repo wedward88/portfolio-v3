@@ -16,7 +16,7 @@ export const projects = [
     date: 'January 2025',
     url: '/images/bingequeue.png',
     title: 'BingeQueue',
-    desc: 'Track streaming subscriptions and find where to watch. Manage monthly costs, search TV and movies by your plans, and keep a watch list of what to binge next. Includes a companion iOS client. Deployed on a dedicated server running Apache2.',
+    desc: 'Track streaming subscriptions and find where to watch. Manage monthly costs, search TV and movies by your plans, and keep a watch list of what to binge next. Includes a companion iOS client.',
     badges: [
       'NextJS',
       'TypeScript',
@@ -56,7 +56,7 @@ export const projects = [
     date: 'November 2024',
     url: '/images/nyt-headliner.png',
     title: 'NYT Headliner',
-    desc: 'Inspired by the New York Times Birthday Collection, this small app can be used to browse New York Times articles from a specified date. Deployed on a dedicated server running Apache2.',
+    desc: 'Inspired by the New York Times Birthday Collection, this small app can be used to browse New York Times articles from a specified date.',
     badges: ['NextJS', 'TypeScript', 'React', 'Tailwind CSS', 'Apache2'],
     github: 'https://github.com/wedward88/nyt-headliner',
     link: 'https://nyt-headliner.wedward.com/',
@@ -83,7 +83,7 @@ export const projects = [
     date: 'May 2019',
     url: '/images/endeavornote.png',
     title: 'Endeavornote',
-    desc: 'A single page clone of Evernote with custom authentication. This was my very first full stack project back in 2019. Deployed on a dedicated server running Apache2.',
+    desc: 'A single page clone of Evernote with custom authentication. This was my very first full stack project back in 2019.',
     badges: [
       'Ruby',
       'JavaScript',
