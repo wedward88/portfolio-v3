@@ -16,7 +16,7 @@ export const projects = [
     date: 'January 2025',
     url: '/images/bingequeue.png',
     title: 'BingeQueue',
-    desc: 'Track streaming subscriptions and find where to watch. Manage monthly costs, search TV and movies by your plans, and keep a watch list of what to binge next. Deployed on a dedicated server running Apache2.',
+    desc: 'Track streaming subscriptions and find where to watch. Manage monthly costs, search TV and movies by your plans, and keep a watch list of what to binge next. Includes a companion iOS client. Deployed on a dedicated server running Apache2.',
     badges: [
       'NextJS',
       'TypeScript',
@@ -26,6 +26,9 @@ export const projects = [
       'Prisma',
       'PostgreSQL',
       'OAuth 2.0',
+      'Swift',
+      'SwiftUI',
+      'iOS',
       'Apache2',
     ],
     github: 'https://github.com/wedward88/bingequeue',
