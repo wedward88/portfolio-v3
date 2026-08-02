@@ -12,11 +12,11 @@ export type ProjectType = {
 
 export const projects = [
   {
-    name: 'servicecycle',
+    name: 'bingequeue',
     date: 'January 2025',
-    url: '/images/servicecycle.png',
-    title: 'ServiceCycle',
-    desc: 'Track streaming subscriptions and find where to watch. Manage monthly costs, search TV and movies by your plans, and keep a drag-reorderable watch list. Deployed on a dedicated server running Apache2.',
+    url: '/images/bingequeue.png',
+    title: 'BingeQueue',
+    desc: 'Track streaming subscriptions and find where to watch. Manage monthly costs, search TV and movies by your plans, and keep a watch list of what to binge next. Deployed on a dedicated server running Apache2.',
     badges: [
       'NextJS',
       'TypeScript',
@@ -28,8 +28,8 @@ export const projects = [
       'OAuth 2.0',
       'Apache2',
     ],
-    github: 'https://github.com/wedward88/servicecycle',
-    link: 'https://servicecycle.wedward.com',
+    github: 'https://github.com/wedward88/bingequeue',
+    link: 'https://www.bingequeue.com',
   },
   {
     name: 'portfolio',
