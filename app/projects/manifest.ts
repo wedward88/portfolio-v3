@@ -8,6 +8,7 @@ export type ProjectType = {
   badges: string[];
   github: string;
   link: string;
+  deprecated?: boolean;
 };
 
 export const projects = [
@@ -83,7 +84,7 @@ export const projects = [
     date: 'May 2019',
     url: '/images/endeavornote.png',
     title: 'Endeavornote',
-    desc: 'A single page clone of Evernote with custom authentication. This was my very first full stack project back in 2019.',
+    desc: 'A single page clone of Evernote with custom authentication. This was my very first full stack project back in 2019. Now deprecated and no longer maintained.',
     badges: [
       'Ruby',
       'JavaScript',
@@ -96,6 +97,7 @@ export const projects = [
       'Apache2',
     ],
     github: 'https://github.com/wedward88/Endeavornote',
-    link: 'https://endeavornote.wedward.com/#/',
+    link: 'https://github.com/wedward88/Endeavornote',
+    deprecated: true,
   },
 ];

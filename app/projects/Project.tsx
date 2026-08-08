@@ -121,8 +121,11 @@ const Project = ({ project, index }: ProjectProps) => {
             >
               {project.title}
             </Link>
-            <div className='flex items-center gap-3 text-sm text-base-content/55 md:text-base'>
+            <div className='flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-base-content/55 md:text-base'>
               <span>{project.date}</span>
+              {project.deprecated && (
+                <span className='text-base-content/40'>Deprecated</span>
+              )}
               <Link
                 className='text-base hover:text-accent md:text-lg'
                 target='_blank'
